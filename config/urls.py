@@ -21,4 +21,5 @@ urlpatterns = [
     # for test
     path('foods/', include("foods.urls")),
     path('posts/', include("posts.urls")),
+    path('nutrients/', include("nutrients.urls")),
 ]
