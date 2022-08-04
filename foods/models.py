@@ -13,7 +13,7 @@ class Category(models.Model):
     verbose_name_plural = 'Categories'
 
 class Food(models.Model):
-  name = models.CharField(max_length=80)
+  name = models.CharField(max_length=200)
   # category = models.ManyToManyField(Category, blank=True)
   category = models.CharField(max_length=30)
 
