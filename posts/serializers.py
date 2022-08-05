@@ -61,7 +61,7 @@ class PostSerializer(serializers.ModelSerializer):
       fat = result[3],
       dietary_fiber = result[4],
       magnesium = result[5],
-      vitamin_c = result[6],
+      vitamin_a = result[6],
       vitamin_d = result[7],
       vitamin_b6 = result[8],
       vitamin_b12 = result[9],
