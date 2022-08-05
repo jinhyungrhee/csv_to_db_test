@@ -23,7 +23,7 @@ class Nutrient(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 
-  category = models.ManyToManyField(Category, blank=True) # 수정 필요
+  # category = models.ManyToManyField(Category, blank=True) # 수정 필요
 
   def __str__(self):
     return f'[{self.username}\'s nutrient :: {self.created_at}]'
