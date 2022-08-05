@@ -12,7 +12,7 @@ class Nutrient(models.Model):
 
   dietary_fiber = models.FloatField(default=0.0)
   magnesium = models.FloatField(default=0.0)
-  vitamin_c = models.FloatField(default=0.0)
+  vitamin_a = models.FloatField(default=0.0)
   vitamin_d = models.FloatField(default=0.0)
   vitamin_b6 = models.FloatField(default=0.0)
   vitamin_b12 = models.FloatField(default=0.0)
@@ -23,7 +23,7 @@ class Nutrient(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 
-  category = models.ManyToManyField(Category, blank=True) # 추후 추가
+  category = models.ManyToManyField(Category, blank=True) # 수정 필요
 
   def __str__(self):
     return f'[{self.username}\'s nutrient :: {self.created_at}]'
