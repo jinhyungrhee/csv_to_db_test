@@ -23,8 +23,9 @@ class Nutrient(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 
-  # category = models.ManyToManyField(Category, blank=True) # 수정 필요
+  category = models.ManyToManyField(Category, blank=True) # 수정 필요
+  # category = models.CharField(max_length=30) # 만약 리스트로 받아야 한다면? ForeignKey나 ManyToManyField 사용
 
   def __str__(self):
-    return f'[{self.username}\'s nutrient :: {self.created_at}]'
+    return f'[{self.username}\'의 오늘하루 영양성분표 :: {self.created_at}]'
     

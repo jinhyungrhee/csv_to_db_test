@@ -14,8 +14,8 @@ class Category(models.Model):
 
 class Food(models.Model):
   name = models.CharField(max_length=200)
-  # category = models.ManyToManyField(Category, blank=True)
-  category = models.CharField(max_length=30)
+  category = models.ManyToManyField(Category, blank=True)
+  # category = models.CharField(max_length=30)
 
   energy = models.FloatField(default=0.0)
   protein = models.FloatField(default=0.0)

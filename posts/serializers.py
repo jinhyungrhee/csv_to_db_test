@@ -31,27 +31,27 @@ class PostSerializer(serializers.ModelSerializer):
 
   def create(self, validated_data): # post 생성 (이때 음식에 amount 추가 필요)
 
-    b_amount = list(map(float, validated_data['b_amount'][1:-1].split(',')))
-    l_amount = list(map(float, validated_data['l_amount'][1:-1].split(',')))
-    d_amount = list(map(float, validated_data['d_amount'][1:-1].split(',')))
-    s_amount = list(map(float, validated_data['s_amount'][1:-1].split(',')))
+    breakfast_amount = list(map(float, validated_data['b_amount'][1:-1].split(',')))
+    lunch_amount = list(map(float, validated_data['l_amount'][1:-1].split(',')))
+    dinner_amount = list(map(float, validated_data['d_amount'][1:-1].split(',')))
+    snack_amount = list(map(float, validated_data['s_amount'][1:-1].split(',')))
 
     result = [0] * 13
     # c_result = set()
-    c_result = Category.objects.none() # 빈 쿼리셋 생성
+    category_result = Category.objects.none() # 빈 쿼리셋 생성
     breakfast = validated_data.pop('breakfast', [])
     # print(breakfast)
-    result, c_result = calculate(breakfast, b_amount, result, c_result)
+    result, category_result = calculate(breakfast, breakfast_amount, result, category_result)
 
     lunch = validated_data.pop('lunch', [])
-    result, c_result = calculate(lunch, l_amount, result, c_result)
+    result, category_result = calculate(lunch, lunch_amount, result, category_result)
 
     dinner = validated_data.pop('dinner', [])
-    result, c_result = calculate(dinner, d_amount, result, c_result)
+    result, category_result = calculate(dinner, dinner_amount, result, category_result)
 
     snack = validated_data.pop('snack', [])
-    result, c_result = calculate(snack, s_amount, result, c_result)
-    print(result, c_result)
+    result, category_result = calculate(snack, snack_amount, result, category_result)
+    print(result, category_result)
  
     nutrient = Nutrient.objects.create( # 하루 영양정보 생성
       username=validated_data['author'], 
@@ -72,7 +72,7 @@ class PostSerializer(serializers.ModelSerializer):
     )
     # 오늘 먹은 음식들의 카테고리 기록
     categories_id = []
-    for elem in c_result:
+    for elem in category_result:
       # print(elem[0])
       categories_id.append(elem[0])
     nutrient.category.set(categories_id)
