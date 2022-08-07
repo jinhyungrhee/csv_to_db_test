@@ -4,7 +4,7 @@ from django.db import models
 
 class Category(models.Model):
   name = models.CharField(max_length=30)
-  slug = models.SlugField(max_length=200, unique=True, allow_unicode=True)
+  # slug = models.SlugField(max_length=200, unique=True, allow_unicode=True)
 
   def __str__(self):
     return self.name
@@ -39,4 +39,4 @@ class Food(models.Model):
   # updated_at = models.DateTimeField(auto_now=True)
 
   def __str__(self):
-    return f'[{self.pk}]{self.name} :: {self.category} '
+    return f'[{self.pk}]{self.name} :: {self.category.values_list()} '
