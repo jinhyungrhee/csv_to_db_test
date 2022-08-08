@@ -32,6 +32,8 @@ class Food(models.Model):
   tryptophan = models.FloatField(default=0.0)
   dha_epa = models.FloatField(default=0.0)
 
+  classifier = models.IntegerField(default=0)
+
   # amount = models.IntegerField(default=0)
   # is_beverage = models.BooleanField(default=False)
   
@@ -40,3 +42,4 @@ class Food(models.Model):
 
   def __str__(self):
     return f'[{self.pk}]{self.name} :: {self.category.values_list()} '
+    # return f'[{self.pk}]{self.name} :: {self.category} '
